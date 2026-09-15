@@ -146,6 +146,7 @@ let countdownTimer = null;
 let advanceTimer = null;
 let badgeTimer = null;
 let chestOpened = false;
+let chestFinishesGame = false;
 let soundEnabled = storageGet("ketik100-sound") !== "off";
 let adventure = loadAdventure();
 
@@ -364,12 +365,13 @@ function renderHUD() {
   const done = Math.min(currentRound, total);
   const percent = Math.round((done / total) * 100);
   const chestProgress = correct % 5;
+  const chestReady = correct > 0 && chestProgress === 0;
 
   scoreStat.textContent = score.toLocaleString("id-ID");
   comboStat.textContent = `${combo}🔥`;
   starStat.textContent = `${stars}⭐`;
   roundLabel.textContent = `Ronde ${Math.min(currentRound + 1, total)} dari ${total}`;
-  chestMilestone.textContent = `🎁 Peti: ${chestProgress}/5`;
+  chestMilestone.textContent = chestReady ? "🎁 Peti siap!" : `🎁 Peti: ${chestProgress}/5`;
   progressPercent.textContent = `${percent}%`;
   progressBar.style.width = `${percent}%`;
 }
@@ -424,6 +426,7 @@ function resetGameState() {
   locked = false;
   mistakesThisRound = 0;
   chestOpened = false;
+  chestFinishesGame = false;
   gameActive = false;
   typingInput.value = "";
   typingInput.disabled = true;
@@ -595,14 +598,15 @@ function correctAnswer() {
   advanceTimer = setTimeout(() => {
     const isLastRound = currentRound + 1 >= LESSONS[currentLesson].rounds;
 
-    if (isLastRound) {
-      currentRound += 1;
-      finishGame();
+    if (correct % 5 === 0) {
+      chestFinishesGame = isLastRound;
+      openChestCheckpoint();
       return;
     }
 
-    if (correct % 5 === 0) {
-      openChestCheckpoint();
+    if (isLastRound) {
+      currentRound += 1;
+      finishGame();
       return;
     }
 
@@ -704,6 +708,13 @@ function continueAfterChest() {
   currentRound += 1;
   typingInput.value = "";
   targetCard.classList.remove("success");
+
+  if (chestFinishesGame) {
+    chestFinishesGame = false;
+    finishGame();
+    return;
+  }
+
   renderHUD();
   beginRound();
 }
