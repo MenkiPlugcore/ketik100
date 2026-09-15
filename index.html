@@ -3,307 +3,130 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#5f4ff2" />
-  <meta name="description" content="Ketik100 Adventure Mode — game belajar mengetik ramah siswa ABK dengan XP, level, peti hadiah, badge, dan latihan bertahap." />
-  <title>Ketik100 v1.2 — Adventure Mode</title>
+  <meta name="theme-color" content="#6d5dfc" />
+  <meta name="description" content="Ketik100 Adventure Mode — pilih dunia belajar mengetik lalu bermain di halaman game khusus." />
+  <title>Ketik100 — Adventure Map</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-  <a class="skip-link" href="#game">Lewati ke permainan</a>
-
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#top" aria-label="Ketik100 beranda">
-        <span class="brand-mark" aria-hidden="true">K100</span>
-        <span class="brand-copy">
-          <strong>Ketik100</strong>
-          <small>Adventure Mode</small>
-        </span>
+      <a class="brand" href="index.html" aria-label="Ketik100 beranda">
+        <span class="brand-mark">K100</span>
+        <span><strong>Ketik100</strong><small>Adventure Mode</small></span>
       </a>
-
-      <div class="header-hud" aria-label="Progres petualangan">
-        <div class="mini-level"><span>LV</span><strong id="headerLevel">1</strong></div>
-        <div class="mini-stars"><span aria-hidden="true">⭐</span><strong id="headerStars">0</strong></div>
-      </div>
-
-      <div class="header-actions">
-        <button class="icon-btn" id="focusToggle" type="button" aria-pressed="false">
-          <span aria-hidden="true">◎</span><span class="btn-label">Fokus</span>
-        </button>
-        <button class="icon-btn" id="soundToggle" type="button" aria-pressed="true">
-          <span aria-hidden="true">🔊</span><span class="btn-label">Suara</span>
-        </button>
+      <div class="header-stats" aria-label="Progres pemain">
+        <span>⭐ <b id="headerStars">0</b></span>
+        <span>LV <b id="headerLevel">1</b></span>
       </div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero shell">
       <div class="hero-copy">
-        <div class="eyebrow-pill"><span>🗺️</span> KETIK100 v1.2 • ADVENTURE MODE</div>
-        <h1>Ketik, naik level, dan jelajahi <span>dunia belajar.</span></h1>
-        <p>Temani Kibo melewati dunia huruf, kata, angka, dan kalimat. Setiap jawaban benar memberi XP, bintang, badge, dan peti hadiah.</p>
-        <div class="hero-actions">
-          <a class="primary-btn hero-play" href="#adventureMap">🚀 Mulai petualangan</a>
-          <button class="secondary-btn" id="listenIntro" type="button">🔊 Dengarkan petunjuk</button>
-        </div>
-        <div class="hero-badges">
-          <span>🎯 Satu soal satu fokus</span>
-          <span>🎁 Peti tiap 5 jawaban</span>
-          <span>🏅 Badge pencapaian</span>
-        </div>
+        <span class="eyebrow">✨ ADVENTURE MODE</span>
+        <h1>Pilih dunia, lalu <span>langsung main.</span></h1>
+        <p>Tidak perlu scroll ke area game. Setelah memilih dunia, Ketik100 membuka halaman permainan khusus agar siswa bisa fokus pada satu aktivitas.</p>
+        <a class="primary-btn" href="#adventureMap">🗺️ Pilih dunia</a>
       </div>
 
-      <aside class="adventurer-card" aria-label="Profil petualangan">
-        <div class="profile-spark spark-one" aria-hidden="true">✦</div>
-        <div class="profile-spark spark-two" aria-hidden="true">★</div>
-        <div class="mascot-orbit">
-          <div class="mascot" id="mascot" aria-hidden="true">🤖</div>
-          <span class="mascot-level">LV <strong id="profileLevel">1</strong></span>
-        </div>
-        <div class="mascot-speech" id="mascotSpeech">Hai! Aku Kibo. Ayo mulai dari Hutan Huruf!</div>
-        <div class="xp-block">
-          <div class="xp-copy"><span>XP Petualangan</span><strong id="xpText">0 / 500</strong></div>
-          <div class="xp-track"><div class="xp-bar" id="xpBar"></div></div>
+      <div class="hero-scene" aria-hidden="true">
+        <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+        <div class="island island-a">🌳<span>Aa</span></div>
+        <div class="island island-b">🏡<span>ABC</span></div>
+        <div class="island island-c">🏝️<span>123</span></div>
+        <div class="island island-d">🏰<span>✎</span></div>
+        <div class="kibo-float">🤖</div>
+      </div>
+    </section>
+
+    <section class="shell profile-section" aria-labelledby="profileTitle">
+      <div class="profile-card">
+        <div class="kibo-avatar" aria-hidden="true">🤖</div>
+        <div class="profile-copy">
+          <span class="eyebrow">TEMAN PETUALANGAN</span>
+          <h2 id="profileTitle">Kibo siap menemani!</h2>
+          <p id="mascotSpeech">Hai! Aku Kibo. Ayo mulai dari Hutan Huruf!</p>
+          <div class="xp-row"><span>XP Level</span><strong id="xpText">0 / 500</strong></div>
+          <div class="xp-track"><div id="xpBar"></div></div>
         </div>
         <div class="profile-stats">
-          <div><span>⭐</span><strong id="profileStars">0</strong><small>Bintang</small></div>
-          <div><span>✅</span><strong id="profileCorrect">0</strong><small>Benar</small></div>
-          <div><span>🎁</span><strong id="profileChests">0</strong><small>Peti</small></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="adventure-section" id="adventureMap" aria-labelledby="adventureTitle">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">JALUR PETUALANGAN</span>
-            <h2 id="adventureTitle">Pilih dunia untuk dijelajahi</h2>
-          </div>
-          <p>Rutenya dibuat bertahap, tetapi semua dunia tetap bisa dipilih agar guru dapat menyesuaikan dengan kemampuan siswa.</p>
-        </div>
-
-        <div class="adventure-map" id="lessonGrid">
-          <div class="map-path" aria-hidden="true"></div>
-
-          <button class="world-card world-forest active" data-lesson="huruf" type="button">
-            <span class="world-number">01</span>
-            <span class="world-scene" aria-hidden="true">🌳</span>
-            <span class="world-copy">
-              <small>HUTAN HURUF</small>
-              <strong>Kenal Huruf</strong>
-              <span>1 huruf besar per ronde</span>
-            </span>
-            <span class="world-status" data-status-for="huruf">Mulai →</span>
-          </button>
-
-          <button class="world-card world-village" data-lesson="kata" type="button">
-            <span class="world-number">02</span>
-            <span class="world-scene" aria-hidden="true">🏡</span>
-            <span class="world-copy">
-              <small>DESA KATA</small>
-              <strong>Kata Pendek</strong>
-              <span>1 kata familiar per kartu</span>
-            </span>
-            <span class="world-status" data-status-for="kata">Jelajahi →</span>
-          </button>
-
-          <button class="world-card world-island" data-lesson="angka" type="button">
-            <span class="world-number">03</span>
-            <span class="world-scene" aria-hidden="true">🏝️</span>
-            <span class="world-copy">
-              <small>PULAU ANGKA</small>
-              <strong>Kenal Angka</strong>
-              <span>Angka satu dan dua digit</span>
-            </span>
-            <span class="world-status" data-status-for="angka">Jelajahi →</span>
-          </button>
-
-          <button class="world-card world-castle" data-lesson="kalimat" type="button">
-            <span class="world-number">04</span>
-            <span class="world-scene" aria-hidden="true">🏰</span>
-            <span class="world-copy">
-              <small>KASTIL KALIMAT</small>
-              <strong>Kalimat Mini</strong>
-              <span>Kalimat pendek dan sederhana</span>
-            </span>
-            <span class="world-status" data-status-for="kalimat">Jelajahi →</span>
-          </button>
+          <div><span>Level</span><strong id="profileLevel">1</strong></div>
+          <div><span>Bintang</span><strong id="profileStars">0</strong></div>
+          <div><span>Benar</span><strong id="profileCorrect">0</strong></div>
+          <div><span>Peti</span><strong id="profileChests">0</strong></div>
         </div>
       </div>
     </section>
 
-    <section class="game-zone" id="game" aria-labelledby="practiceTitle">
-      <div class="game-orb orb-one" aria-hidden="true"></div>
-      <div class="game-orb orb-two" aria-hidden="true"></div>
-
-      <div class="shell game-shell">
-        <div class="game-heading">
-          <div>
-            <span class="eyebrow light" id="worldLabel">🌳 HUTAN HURUF</span>
-            <h2 id="practiceTitle">Kenal Huruf</h2>
-          </div>
-          <div class="top-stats" aria-label="Statistik permainan">
-            <div><span>Skor</span><strong id="scoreStat">0</strong></div>
-            <div><span>Combo</span><strong id="comboStat">0🔥</strong></div>
-            <div><span>Bintang</span><strong id="starStat">0⭐</strong></div>
-          </div>
-        </div>
-
-        <div class="game-progress-wrap">
-          <div class="round-label">
-            <span id="roundLabel">Ronde 1 dari 10</span>
-            <span id="chestMilestone">🎁 Peti: 0/5</span>
-            <span id="progressPercent">0%</span>
-          </div>
-          <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
-        </div>
-
-        <div class="game-layout">
-          <aside class="kibo-panel">
-            <div class="kibo-mini" id="kiboMini" aria-hidden="true">🤖</div>
-            <span class="kibo-name">KIBO</span>
-            <p id="kiboGameSpeech">Aku siap membantu. Tekan “Mulai Game” ya!</p>
-            <div class="session-xp">
-              <span>XP sesi</span>
-              <strong id="sessionXp">+0 XP</strong>
-            </div>
-          </aside>
-
-          <div class="game-card" id="gameCard">
-            <div class="card-shine" aria-hidden="true"></div>
-            <div class="game-card-top">
-              <span class="mission-pill" id="missionPill">🎯 MISI: KENAL HURUF</span>
-              <button class="speak-btn" id="speakTarget" type="button" aria-label="Bacakan soal">🔊 <span>Bacakan</span></button>
-            </div>
-
-            <p class="instruction" id="instruction">Tekan huruf yang sama seperti kartu di bawah.</p>
-
-            <div class="target-card-wrap">
-              <div class="target-card" id="targetCard">
-                <span class="target-kicker">KETIK INI</span>
-                <div class="target-line" id="targetLine" aria-live="polite">A</div>
-                <span class="target-hint" id="targetHint">Cari huruf A di keyboard</span>
-              </div>
-              <div class="reward-pop" id="rewardPop" aria-hidden="true">+100 ⭐</div>
-            </div>
-
-            <div class="input-zone">
-              <label class="typing-label" for="typingInput">Jawaban kamu</label>
-              <input id="typingInput" type="text" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Ketik di sini…" />
-              <div class="feedback-message" id="feedbackMessage" aria-live="polite">Tekan tombol “Mulai Game” untuk bermain.</div>
-            </div>
-
-            <div class="game-actions">
-              <button class="primary-btn big-play" id="startBtn" type="button">▶ Mulai Game</button>
-              <button class="secondary-btn" id="restartBtn" type="button">↻ Ulangi</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="keyboard-panel">
-          <div class="keyboard-copy">
-            <span class="eyebrow">BANTUAN KEYBOARD</span>
-            <strong>Cari tombol yang menyala ✨</strong>
-            <small>Petunjuk visual tetap aktif agar siswa tidak perlu menghafal posisi tombol sekaligus.</small>
-          </div>
-          <div class="keyboard" id="keyboard" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <div class="countdown-overlay" id="countdownOverlay" hidden aria-live="assertive">
-        <div class="countdown-bubble">
-          <small>PETUALANGAN DIMULAI</small>
-          <strong id="countdownNumber">3</strong>
-          <span id="countdownText">Siapkan tanganmu!</span>
-        </div>
-      </div>
-
-      <div class="chest-overlay" id="chestOverlay" hidden>
-        <div class="chest-card" role="dialog" aria-modal="true" aria-labelledby="chestTitle">
-          <span class="eyebrow">CHECKPOINT!</span>
-          <h2 id="chestTitle">Kamu menemukan peti 🎁</h2>
-          <p>Sudah 5 jawaban benar. Buka petinya untuk mengambil hadiah.</p>
-          <button class="chest-button" id="openChestBtn" type="button" aria-label="Buka peti hadiah">
-            <span id="chestEmoji" aria-hidden="true">🧰</span>
-            <small>KLIK UNTUK BUKA</small>
-          </button>
-          <div class="chest-reward" id="chestReward" hidden aria-live="polite">
-            <strong id="chestRewardTitle">+3 ⭐</strong>
-            <span id="chestRewardXp">+50 XP</span>
-          </div>
-          <button class="primary-btn" id="continueChestBtn" type="button" hidden>Lanjut petualangan →</button>
-        </div>
-      </div>
-
-      <div class="finish-overlay" id="finishOverlay" hidden>
-        <div class="finish-card" role="dialog" aria-modal="true" aria-labelledby="finishTitle">
-          <div class="finish-crown">🏆</div>
-          <span class="eyebrow">DUNIA SELESAI</span>
-          <h2 id="finishTitle">Hebat sekali!</h2>
-          <p id="finishMessage">Kamu berhasil menyelesaikan petualangan.</p>
-          <div class="finish-score">
-            <div><span>Skor</span><strong id="finishScore">0</strong></div>
-            <div><span>Bintang</span><strong id="finishStars">0 ⭐</strong></div>
-            <div><span>XP sesi</span><strong id="finishXp">+0 XP</strong></div>
-          </div>
-          <div class="finish-level">
-            <span id="finishLevelText">Level 1</span>
-            <div class="xp-track"><div class="xp-bar" id="finishXpBar"></div></div>
-          </div>
-          <div class="finish-actions">
-            <button class="primary-btn" id="playAgainBtn" type="button">🎮 Main lagi</button>
-            <button class="secondary-btn" id="chooseGameBtn" type="button">🗺️ Pilih dunia lain</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="badge-toast" id="badgeToast" hidden aria-live="polite">
-        <span id="badgeToastIcon">🏅</span>
-        <div><small>BADGE BARU!</small><strong id="badgeToastName">Langkah Pertama</strong></div>
-      </div>
-    </section>
-
-    <section class="badge-section shell" aria-labelledby="badgeTitle">
+    <section class="shell map-section" id="adventureMap" aria-labelledby="mapTitle">
       <div class="section-heading">
-        <div>
-          <span class="eyebrow">KOLEKSI BADGE</span>
-          <h2 id="badgeTitle">Pencapaian petualang</h2>
-        </div>
-        <p>Badge terbuka karena usaha dan progres. Tidak ada badge yang hilang karena salah mengetik.</p>
+        <div><span class="eyebrow">PETA PETUALANGAN</span><h2 id="mapTitle">Pilih dunia untuk dimainkan</h2></div>
+        <p>Setiap kartu membuka halaman game baru. Tombol kembali tersedia di dalam permainan.</p>
       </div>
 
-      <div class="badge-grid" id="badgeGrid">
-        <article class="badge-card locked" data-badge="first-step"><span>🌟</span><strong>Langkah Pertama</strong><small>Jawaban benar pertama</small></article>
-        <article class="badge-card locked" data-badge="alphabet-master"><span>🔤</span><strong>Master A–Z</strong><small>Selesaikan Hutan Huruf</small></article>
-        <article class="badge-card locked" data-badge="word-explorer"><span>📚</span><strong>Penjelajah Kata</strong><small>Selesaikan Desa Kata</small></article>
-        <article class="badge-card locked" data-badge="number-friend"><span>🔢</span><strong>Sahabat Angka</strong><small>Selesaikan Pulau Angka</small></article>
-        <article class="badge-card locked" data-badge="sentence-hero"><span>✏️</span><strong>Pahlawan Kalimat</strong><small>Selesaikan Kastil Kalimat</small></article>
-        <article class="badge-card locked" data-badge="combo-five"><span>🔥</span><strong>Combo 5</strong><small>5 jawaban benar beruntun</small></article>
+      <div class="world-grid">
+        <a class="world-card forest" href="game.html?mode=huruf" data-world="huruf">
+          <div class="world-art"><span class="big-icon">🌳</span><span class="world-symbol">A</span><span class="spark s1">✦</span><span class="spark s2">✦</span></div>
+          <div class="world-body">
+            <span class="world-number">DUNIA 1</span><h3>Hutan Huruf</h3>
+            <p>Satu huruf besar muncul setiap ronde. Cari tombol yang sama lalu tekan.</p>
+            <div class="world-footer"><span>⭐ Paling mudah</span><b data-status-for="huruf">Mulai →</b></div>
+          </div>
+        </a>
+
+        <a class="world-card village" href="game.html?mode=kata" data-world="kata">
+          <div class="world-art"><span class="big-icon">🏡</span><span class="world-symbol">ABC</span><span class="spark s1">✦</span></div>
+          <div class="world-body">
+            <span class="world-number">DUNIA 2</span><h3>Desa Kata</h3>
+            <p>Ketik satu kata sederhana dan familiar pada setiap kartu.</p>
+            <div class="world-footer"><span>⭐ Mudah</span><b data-status-for="kata">Jelajahi →</b></div>
+          </div>
+        </a>
+
+        <a class="world-card island-world" href="game.html?mode=angka" data-world="angka">
+          <div class="world-art"><span class="big-icon">🏝️</span><span class="world-symbol">123</span><span class="spark s2">✦</span></div>
+          <div class="world-body">
+            <span class="world-number">DUNIA 3</span><h3>Pulau Angka</h3>
+            <p>Kenali angka dan nomor dengan target singkat satu per satu.</p>
+            <div class="world-footer"><span>⭐ Mudah</span><b data-status-for="angka">Jelajahi →</b></div>
+          </div>
+        </a>
+
+        <a class="world-card castle" href="game.html?mode=kalimat" data-world="kalimat">
+          <div class="world-art"><span class="big-icon">🏰</span><span class="world-symbol">✎</span><span class="spark s1">✦</span><span class="spark s2">✦</span></div>
+          <div class="world-body">
+            <span class="world-number">DUNIA 4</span><h3>Kastil Kalimat</h3>
+            <p>Tahap lanjut untuk mengetik kalimat mini dengan pelan dan teliti.</p>
+            <div class="world-footer"><span>⭐⭐ Sedang</span><b data-status-for="kalimat">Jelajahi →</b></div>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section class="shell section-block teacher-section" aria-labelledby="guru-title">
-      <div class="teacher-card">
-        <div class="teacher-icon" aria-hidden="true">💡</div>
-        <div>
-          <span class="eyebrow">UNTUK GURU & PENDAMPING</span>
-          <h2 id="guru-title">Reward tanpa tekanan.</h2>
-          <p>Adventure Mode tetap tidak memakai nyawa atau game over. Siswa boleh salah dan mencoba lagi. XP, bintang, peti, dan badge hanya bertambah sebagai penguatan positif.</p>
-        </div>
+    <section class="shell badge-section" aria-labelledby="badgeTitle">
+      <div class="section-heading compact-heading">
+        <div><span class="eyebrow">KOLEKSI</span><h2 id="badgeTitle">Badge petualangan</h2></div>
+        <p>Badge terbuka otomatis saat siswa mencapai milestone.</p>
       </div>
+      <div class="badge-grid" id="badgeGrid">
+        <article class="badge-card locked" data-badge="first-step"><span>🌟</span><strong>Langkah Pertama</strong></article>
+        <article class="badge-card locked" data-badge="alphabet-master"><span>🔤</span><strong>Master A–Z</strong></article>
+        <article class="badge-card locked" data-badge="word-explorer"><span>📚</span><strong>Penjelajah Kata</strong></article>
+        <article class="badge-card locked" data-badge="number-friend"><span>🔢</span><strong>Sahabat Angka</strong></article>
+        <article class="badge-card locked" data-badge="sentence-hero"><span>✏️</span><strong>Pahlawan Kalimat</strong></article>
+        <article class="badge-card locked" data-badge="combo-five"><span>🔥</span><strong>Combo 5</strong></article>
+      </div>
+    </section>
+
+    <section class="shell teacher-section">
+      <div class="teacher-card"><span class="teacher-icon">💡</span><div><strong>Untuk guru & pendamping</strong><p>Dunia tidak dikunci. Guru bebas memilih latihan sesuai kemampuan siswa tanpa harus menyelesaikan dunia sebelumnya.</p></div></div>
     </section>
   </main>
 
-  <footer>
-    <div class="shell footer-inner">
-      <div><strong>Ketik100 v1.2</strong><span>Adventure Mode • Main, Ketik, Hebat!</span></div>
-      <span>Progres petualangan tersimpan lokal di perangkat ini.</span>
-    </div>
-  </footer>
-
-  <script src="app.js" defer></script>
+  <footer><div class="shell footer-inner"><strong>Ketik100 v1.2</strong><span>Adventure Mode • progres tersimpan di perangkat</span></div></footer>
+  <script src="home.js" defer></script>
 </body>
 </html>
