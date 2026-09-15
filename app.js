@@ -58,6 +58,7 @@ let currentIndex = 0;
 let startedAt = null;
 let soundEnabled = localStorage.getItem("ketik100-sound") !== "off";
 let completed = false;
+let completionAnnounced = false;
 
 function renderKeyboard() {
   keyboard.innerHTML = "";
@@ -98,10 +99,10 @@ function renderTarget() {
 function highlightNextKey() {
   document.querySelectorAll(".key.active").forEach((el) => el.classList.remove("active"));
   const target = getTarget();
-  const typedLength = typingInput.value.length;
-  const nextChar = (target[typedLength] || "").toLowerCase();
+  const nextChar = (target[typingInput.value.length] || "").toLowerCase();
   if (!nextChar || nextChar === " ") return;
-  const key = keyboard.querySelector(`[data-key="${CSS.escape(nextChar)}"]`);
+
+  const key = [...keyboard.querySelectorAll(".key")].find((el) => el.dataset.key === nextChar);
   if (key) key.classList.add("active");
 }
 
@@ -127,6 +128,7 @@ function calculateStats() {
 function updateFeedback() {
   const target = getTarget();
   const typed = typingInput.value;
+  const wasCompleted = completed;
   completed = typed === target;
 
   typingInput.classList.toggle("success", completed);
@@ -135,15 +137,21 @@ function updateFeedback() {
   if (completed) {
     feedbackMessage.textContent = "Hebat! Latihan ini selesai. Kamu boleh lanjut.";
     feedbackMessage.className = "feedback-message success";
-    if (soundEnabled) speak("Hebat! Latihan selesai. Kamu boleh lanjut.");
+    if (!wasCompleted && !completionAnnounced && soundEnabled) {
+      completionAnnounced = true;
+      speak("Hebat! Latihan selesai. Kamu boleh lanjut.");
+    }
     saveProgress();
   } else if (typed.length > target.length || [...typed].some((char, i) => char !== target[i])) {
+    completionAnnounced = false;
     feedbackMessage.textContent = "Tidak apa-apa. Periksa huruf yang berwarna merah lalu coba lagi.";
     feedbackMessage.className = "feedback-message warning";
   } else if (typed.length > 0) {
+    completionAnnounced = false;
     feedbackMessage.textContent = "Bagus, lanjutkan pelan-pelan.";
     feedbackMessage.className = "feedback-message";
   } else {
+    completionAnnounced = false;
     feedbackMessage.textContent = "Siap? Tekan kotak di atas lalu mulai mengetik.";
     feedbackMessage.className = "feedback-message";
   }
@@ -161,6 +169,7 @@ function loadLesson(key, { scroll = false } = {}) {
   currentIndex = 0;
   startedAt = null;
   completed = false;
+  completionAnnounced = false;
 
   document.querySelectorAll(".lesson-card").forEach((card) => {
     card.classList.toggle("active", card.dataset.lesson === key);
@@ -171,6 +180,7 @@ function loadLesson(key, { scroll = false } = {}) {
   typingInput.value = "";
   typingInput.classList.remove("success");
   nextBtn.disabled = true;
+  nextBtn.textContent = "Latihan berikutnya →";
   feedbackMessage.textContent = "Siap? Tekan kotak di atas lalu mulai mengetik.";
   feedbackMessage.className = "feedback-message";
 
@@ -193,9 +203,11 @@ function nextRound() {
     currentIndex += 1;
     startedAt = null;
     completed = false;
+    completionAnnounced = false;
     typingInput.value = "";
     typingInput.classList.remove("success");
     nextBtn.disabled = true;
+    nextBtn.textContent = "Latihan berikutnya →";
     feedbackMessage.textContent = "Bagus. Sekarang lanjut ke latihan berikutnya.";
     feedbackMessage.className = "feedback-message";
     renderTarget();
@@ -267,10 +279,7 @@ typingInput.addEventListener("paste", (event) => {
   feedbackMessage.className = "feedback-message warning";
 });
 
-nextBtn.addEventListener("click", () => {
-  nextBtn.textContent = "Latihan berikutnya →";
-  nextRound();
-});
+nextBtn.addEventListener("click", nextRound);
 
 fontSizeSelect.addEventListener("change", () => {
   setTargetSize(fontSizeSelect.value);
