@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#5b5bd6" />
+  <meta name="description" content="Ketik100 — web latihan mengetik sederhana, ramah siswa ABK, dan responsif untuk HP maupun desktop." />
+  <title>Ketik100 — Belajar Mengetik Jadi Menyenangkan</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#latihan">Lewati ke latihan</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#" aria-label="Ketik100 beranda">
+        <span class="brand-mark" aria-hidden="true">K100</span>
+        <span>
+          <strong>Ketik100</strong>
+          <small>Belajar mengetik pelan-pelan</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="focusToggle" type="button" aria-pressed="false" title="Mode fokus">
+          <span aria-hidden="true">◎</span>
+          <span class="btn-label">Fokus</span>
+        </button>
+        <button class="icon-btn" id="soundToggle" type="button" aria-pressed="true" title="Suara panduan">
+          <span aria-hidden="true">🔊</span>
+          <span class="btn-label">Suara</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow">LATIHAN MENGETIK RAMAH ABK</span>
+        <h1>Belajar mengetik, <span>sedikit demi sedikit.</span></h1>
+        <p>Ketik100 membantu siswa mengenal keyboard, huruf, kata, dan kalimat melalui latihan singkat dengan tampilan yang tenang dan mudah dipahami.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#latihan">Mulai latihan</a>
+          <button class="secondary-btn" id="listenIntro" type="button">🔊 Dengarkan petunjuk</button>
+        </div>
+        <div class="hero-points" aria-label="Keunggulan Ketik100">
+          <span>✓ Tombol besar</span>
+          <span>✓ Tanpa iklan</span>
+          <span>✓ Bisa di HP</span>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-hidden="true">
+        <div class="mascot">⌨️</div>
+        <div class="bubble">Ayo ketik bersama!</div>
+        <div class="mini-keyboard">
+          <span>A</span><span>S</span><span>D</span><span>F</span><span>J</span><span>K</span><span>L</span>
+        </div>
+        <div class="star-row">★ ★ ★</div>
+      </div>
+    </section>
+
+    <section class="shell section-block" aria-labelledby="pilih-latihan">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PILIH LATIHAN</span>
+          <h2 id="pilih-latihan">Mulai dari yang paling mudah</h2>
+        </div>
+        <p>Pilih satu latihan. Tidak perlu buru-buru menyelesaikan semuanya.</p>
+      </div>
+
+      <div class="lesson-grid" id="lessonGrid">
+        <button class="lesson-card active" data-lesson="huruf" type="button">
+          <span class="lesson-icon purple">Aa</span>
+          <span class="lesson-text"><strong>Kenal Huruf</strong><small>Ketik huruf satu per satu</small></span>
+          <span class="level">Mudah</span>
+        </button>
+        <button class="lesson-card" data-lesson="kata" type="button">
+          <span class="lesson-icon blue">ABC</span>
+          <span class="lesson-text"><strong>Kata Pendek</strong><small>Ketik kata yang sering dipakai</small></span>
+          <span class="level">Mudah</span>
+        </button>
+        <button class="lesson-card" data-lesson="kalimat" type="button">
+          <span class="lesson-icon green">✎</span>
+          <span class="lesson-text"><strong>Kalimat</strong><small>Ketik kalimat sederhana</small></span>
+          <span class="level">Sedang</span>
+        </button>
+        <button class="lesson-card" data-lesson="angka" type="button">
+          <span class="lesson-icon orange">123</span>
+          <span class="lesson-text"><strong>Angka</strong><small>Latihan angka dan nomor</small></span>
+          <span class="level">Mudah</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="practice-wrap" id="latihan" aria-labelledby="practiceTitle">
+      <div class="shell practice-shell">
+        <div class="practice-topbar">
+          <div>
+            <span class="eyebrow">LATIHAN AKTIF</span>
+            <h2 id="practiceTitle">Kenal Huruf</h2>
+          </div>
+          <div class="practice-controls">
+            <label class="control-field">
+              <span>Ukuran teks</span>
+              <select id="fontSizeSelect" aria-label="Ukuran teks latihan">
+                <option value="normal">Normal</option>
+                <option value="besar" selected>Besar</option>
+                <option value="sangat-besar">Sangat besar</option>
+              </select>
+            </label>
+            <button class="secondary-btn compact" id="speakTarget" type="button">🔊 Bacakan</button>
+          </div>
+        </div>
+
+        <div class="progress-track" aria-label="Kemajuan latihan">
+          <div id="progressBar" class="progress-bar" style="width:0%"></div>
+        </div>
+
+        <div class="typing-card">
+          <p class="instruction" id="instruction">Ketik huruf yang kamu lihat di bawah ini.</p>
+          <div class="target-line size-besar" id="targetLine" aria-live="polite"></div>
+
+          <label class="typing-label" for="typingInput">Ketik di kotak ini</label>
+          <textarea id="typingInput" rows="2" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Mulai mengetik di sini…"></textarea>
+
+          <div class="feedback-row" aria-live="polite">
+            <div class="feedback-message" id="feedbackMessage">Siap? Tekan kotak di atas lalu mulai mengetik.</div>
+            <button id="nextBtn" class="primary-btn compact" type="button" disabled>Latihan berikutnya →</button>
+          </div>
+        </div>
+
+        <div class="stats-grid" aria-label="Hasil latihan">
+          <article><span>Ketepatan</span><strong id="accuracyStat">100%</strong><small>huruf yang benar</small></article>
+          <article><span>Kecepatan</span><strong id="wpmStat">0</strong><small>kata per menit</small></article>
+          <article><span>Benar</span><strong id="correctStat">0</strong><small>karakter</small></article>
+          <article><span>Latihan</span><strong id="roundStat">1/5</strong><small>sesi saat ini</small></article>
+        </div>
+
+        <div class="keyboard-helper" aria-labelledby="keyboardTitle">
+          <div class="helper-copy">
+            <span class="eyebrow">BANTUAN VISUAL</span>
+            <h3 id="keyboardTitle">Cari tombol yang menyala</h3>
+            <p>Huruf berikutnya akan ditandai. Guru dapat memakai bagian ini untuk membantu siswa menemukan tombol keyboard.</p>
+          </div>
+          <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section-block calm-section" aria-labelledby="guru-title">
+      <div class="calm-card">
+        <div class="calm-icon" aria-hidden="true">💡</div>
+        <div>
+          <span class="eyebrow">UNTUK GURU & PENDAMPING</span>
+          <h2 id="guru-title">Tidak harus cepat. Yang penting konsisten.</h2>
+          <p>Berikan satu instruksi dalam satu waktu. Gunakan tombol “Bacakan” bila siswa lebih mudah menerima instruksi secara auditori. Jika siswa mulai lelah atau terdistraksi, berhenti sejenak lalu lanjutkan tanpa mengulang dari awal.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div><strong>Ketik100</strong><span>Belajar mengetik dengan cara yang lebih ramah.</span></div>
+      <span>Data latihan tersimpan hanya di perangkat ini.</span>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
