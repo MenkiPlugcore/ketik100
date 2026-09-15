@@ -14,26 +14,31 @@ Mode tersedia:
 
 - **Hutan Huruf** — satu huruf per ronde.
 - **Desa Kata** — satu kata sederhana per kartu.
+- **Taman Gambar / Picture Quest** — lihat ilustrasi lalu ketik nama gambar.
 - **Pulau Angka** — angka dan nomor singkat.
 - **Kastil Kalimat** — kalimat mini untuk tahap lanjutan.
 
+## v1.3 — Picture Quest
+
+Picture Quest menambahkan pembelajaran berbasis visual untuk siswa yang lebih mudah memahami benda melalui gambar.
+
+- 10 ilustrasi SVG premium: apel, kucing, mobil, buku, rumah, ikan, bola, pensil, bunga, dan matahari.
+- Gambar tampil besar di kartu soal tanpa menampilkan jawabannya.
+- Siswa mengetik nama gambar dengan keyboard helper yang tetap aktif.
+- Tombol **Bacakan** dapat menyebut nama gambar bila siswa membutuhkan dukungan auditori.
+- Tetap memakai skor, combo, bintang, XP, level, peti hadiah, dan reward positif.
+- Badge baru **Jago Gambar** setelah menyelesaikan Taman Gambar.
+- Tidak ada game over atau pengurangan skor saat siswa salah.
+- Semua progres tetap kompatibel dengan data Adventure Mode sebelumnya.
+
 ## Premium UI Pack
 
-Versi terbaru memakai aset visual original Ketik100 melalui `assets/premium-icons.svg`.
+Visual utama Ketik100 memakai aset original melalui:
 
-Termasuk:
+- `assets/premium-icons.svg` — Kibo, logo, 4 dunia lama, tombol, reward, badge, dan HUD icons.
+- `assets/picture-quest.svg` — dunia Taman Gambar dan ilustrasi Picture Quest.
 
-- Logo Ketik100/Kibo mark.
-- Maskot Kibo original berbasis SVG.
-- Ilustrasi Hutan Huruf, Desa Kata, Pulau Angka, dan Kastil Kalimat.
-- Icon Play, Back, Restart, Sound On/Off, Keyboard Help.
-- Star, XP Gem, Reward Chest, Badge, Trophy, Check, dan Combo Flame.
-- Favicon baru yang mengikuti identitas visual Ketik100.
-- Card, tombol, progress panel, modal reward, dan HUD game dengan tampilan premium.
-- Responsive untuk HP kecil, tablet, laptop, dan desktop.
-- `prefers-reduced-motion` tetap didukung.
-
-Seluruh visual utama disimpan di repository sendiri sehingga tidak membutuhkan icon CDN eksternal.
+Seluruh visual disimpan di repository sendiri sehingga tidak membutuhkan icon CDN eksternal.
 
 ## Fitur game
 
@@ -47,25 +52,31 @@ Seluruh visual utama disimpan di repository sendiri sehingga tidak membutuhkan i
 - Tidak ada sistem nyawa/game over; jawaban salah dapat dicoba lagi.
 - Text-to-Speech Bahasa Indonesia.
 - Progres tersimpan di browser melalui `localStorage`.
+- Responsive untuk HP kecil, tablet, laptop, dan desktop.
+- `prefers-reduced-motion` tetap didukung.
 
 ## Prinsip desain ABK
 
 Ketik100 memakai pola satu target dalam satu waktu. Jawaban salah tidak mengurangi skor atau mengakhiri permainan. Feedback dibuat singkat dan siswa diberi kesempatan mencoba kembali.
 
-Dunia latihan juga tidak dikunci agar guru atau pendamping dapat memilih aktivitas berdasarkan kemampuan siswa, bukan berdasarkan urutan game.
+Pada Picture Quest, suara jawaban tidak diputar otomatis agar siswa tetap mencoba mengenali gambar terlebih dahulu. Dukungan auditori tersedia melalui tombol **Bacakan** bila diperlukan.
+
+Dunia latihan tidak dikunci agar guru atau pendamping dapat memilih aktivitas berdasarkan kemampuan siswa, bukan berdasarkan urutan game.
 
 ## Struktur
 
 ```text
 ketik100/
 ├── assets/
-│   └── premium-icons.svg
+│   ├── premium-icons.svg
+│   └── picture-quest.svg
 ├── index.html
 ├── home.css
 ├── home.js
 ├── game.html
 ├── game.css
-├── game.js
+├── game-v13.js
+├── v13.css
 ├── favicon.svg
 └── README.md
 ```
