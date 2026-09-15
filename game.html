@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#211d49" />
+  <meta name="description" content="Halaman permainan Ketik100 Adventure Mode." />
+  <title>Ketik100 — Game</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <header class="game-header">
+    <div class="shell header-inner">
+      <a class="back-btn" href="index.html#adventureMap">← <span>Pilih dunia</span></a>
+      <div class="game-brand"><span class="brand-mark">K100</span><div><strong id="headerWorld">Hutan Huruf</strong><small>Adventure Mode</small></div></div>
+      <div class="header-actions">
+        <span class="level-chip">LV <b id="headerLevel">1</b></span>
+        <button id="soundToggle" class="icon-btn" type="button" aria-pressed="true" aria-label="Aktifkan atau matikan suara">🔊</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <div class="game-bg bg-a"></div><div class="game-bg bg-b"></div>
+    <div class="shell game-shell">
+      <section class="game-top">
+        <div class="world-copy">
+          <span class="world-label" id="worldLabel">🌳 HUTAN HURUF</span>
+          <h1 id="practiceTitle">Kenal Huruf</h1>
+        </div>
+        <div class="top-stats" aria-label="Statistik permainan">
+          <div><span>Skor</span><strong id="scoreStat">0</strong></div>
+          <div><span>Combo</span><strong id="comboStat">0🔥</strong></div>
+          <div><span>Bintang</span><strong id="starStat">0⭐</strong></div>
+        </div>
+      </section>
+
+      <section class="progress-panel">
+        <div class="round-row"><span id="roundLabel">Ronde 1 dari 10</span><span id="chestMilestone">🎁 Peti di 5 benar</span><b id="progressPercent">0%</b></div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+      </section>
+
+      <section class="play-layout">
+        <div class="game-card" id="gameCard">
+          <div class="card-top">
+            <span class="mission-pill" id="missionPill">🎯 MISI: KENAL HURUF</span>
+            <button id="speakTarget" class="speak-btn" type="button">🔊 <span>Bacakan</span></button>
+          </div>
+
+          <p class="instruction" id="instruction">Tekan huruf yang sama seperti kartu di bawah.</p>
+
+          <div class="target-card-wrap">
+            <div class="target-card" id="targetCard">
+              <span class="target-kicker">KETIK INI</span>
+              <div class="target-line" id="targetLine" aria-live="polite">A</div>
+              <span class="target-hint" id="targetHint">Cari huruf A di keyboard</span>
+            </div>
+            <div class="reward-pop" id="rewardPop" aria-hidden="true">+100</div>
+          </div>
+
+          <div class="input-zone">
+            <label for="typingInput">Jawaban kamu</label>
+            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Ketik di sini…" disabled />
+            <div id="feedbackMessage" class="feedback-message" aria-live="polite">Tekan “Mulai Game” saat sudah siap.</div>
+          </div>
+
+          <div class="game-actions">
+            <button id="startBtn" class="primary-btn" type="button">▶ Mulai Game</button>
+            <button id="restartBtn" class="secondary-btn" type="button">↻ Ulangi</button>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div class="kibo-card">
+            <div id="kiboMini" class="kibo-mini">🤖</div>
+            <div><span>KIBO</span><p id="kiboGameSpeech">Aku siap membantu. Tekan “Mulai Game” ya!</p></div>
+          </div>
+          <div class="xp-card"><div class="xp-title"><span>XP sesi</span><strong id="sessionXp">+0 XP</strong></div><div class="xp-track"><div id="miniXpBar"></div></div><small id="levelText">Level 1 • 0/500 XP</small></div>
+          <div class="keyboard-card">
+            <div class="keyboard-title"><span>⌨️ Bantuan keyboard</span><small>Cari tombol yang menyala</small></div>
+            <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <div class="countdown-overlay" id="countdownOverlay" hidden aria-live="assertive">
+      <div class="countdown-card"><small>SIAP MAIN?</small><strong id="countdownNumber">3</strong><span id="countdownText">Siapkan tanganmu!</span></div>
+    </div>
+
+    <div class="modal-overlay" id="chestOverlay" hidden>
+      <div class="modal-card chest-card" role="dialog" aria-modal="true" aria-labelledby="chestTitle">
+        <div class="chest-emoji" id="chestEmoji">🧰</div>
+        <span class="modal-eyebrow">CHECKPOINT</span><h2 id="chestTitle">Kamu menemukan peti!</h2><p>Lima jawaban benar sudah terkumpul. Buka hadiahnya.</p>
+        <div class="chest-reward" id="chestReward" hidden><strong id="chestRewardTitle">+3 ⭐</strong><span id="chestRewardXp">+50 XP</span></div>
+        <div class="modal-actions"><button id="openChestBtn" class="primary-btn" type="button">🎁 Buka peti</button><button id="continueChestBtn" class="secondary-btn" type="button" hidden>Lanjut →</button></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="finishOverlay" hidden>
+      <div class="modal-card finish-card" role="dialog" aria-modal="true" aria-labelledby="finishTitle">
+        <div class="trophy">🏆</div><span class="modal-eyebrow">DUNIA SELESAI</span><h2 id="finishTitle">Hebat sekali!</h2><p id="finishMessage">Kamu berhasil menyelesaikan permainan.</p>
+        <div class="finish-stats"><div><span>Skor</span><strong id="finishScore">0</strong></div><div><span>Bintang</span><strong id="finishStars">0 ⭐</strong></div><div><span>XP</span><strong id="finishXp">+0 XP</strong></div></div>
+        <div class="finish-level"><div><span id="finishLevelText">Level 1 • 0/500 XP</span></div><div class="xp-track"><div id="finishXpBar"></div></div></div>
+        <div class="modal-actions"><button id="playAgainBtn" class="primary-btn" type="button">🎮 Main lagi</button><a class="secondary-btn" href="index.html#adventureMap">🗺️ Pilih dunia lain</a></div>
+      </div>
+    </div>
+
+    <div id="badgeToast" class="badge-toast" hidden><span id="badgeToastIcon">🌟</span><div><small>BADGE BARU!</small><strong id="badgeToastName">Langkah Pertama</strong></div></div>
+  </main>
+
+  <script src="game.js" defer></script>
+</body>
+</html>
