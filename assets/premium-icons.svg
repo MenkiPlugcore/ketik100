@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5ed7ff"/><stop offset="1" stop-color="#4f67ff"/></linearGradient>
+    <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8f7bff"/><stop offset="1" stop-color="#5c46f2"/></linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe875"/><stop offset="1" stop-color="#ff9f2f"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#70e7ae"/><stop offset="1" stop-color="#25aa69"/></linearGradient>
+    <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff8bb8"/><stop offset="1" stop-color="#ff557d"/></linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd36c"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#23305f" flood-opacity=".2"/></filter>
+  </defs>
+
+  <symbol id="logo" viewBox="0 0 64 64">
+    <rect x="5" y="5" width="54" height="54" rx="18" fill="url(#gPurple)"/>
+    <rect x="13" y="14" width="38" height="30" rx="12" fill="#13264f" stroke="#8be8ff" stroke-width="2"/>
+    <circle cx="25" cy="28" r="4" fill="#7cefff"/><circle cx="39" cy="28" r="4" fill="#7cefff"/>
+    <path d="M24 36c4 4 12 4 16 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <rect x="23" y="47" width="18" height="8" rx="4" fill="#fff" opacity=".95"/>
+    <text x="32" y="53" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="900" fill="#5b4be7">K100</text>
+  </symbol>
+
+  <symbol id="kibo" viewBox="0 0 180 180">
+    <g filter="url(#shadow)">
+      <ellipse cx="90" cy="151" rx="52" ry="13" fill="#42548e" opacity=".18"/>
+      <rect x="42" y="43" width="96" height="74" rx="31" fill="#f8fbff" stroke="#8adfff" stroke-width="4"/>
+      <rect x="53" y="53" width="74" height="50" rx="22" fill="#10234b"/>
+      <path d="M70 77c5-8 11-8 16 0M94 77c5-8 11-8 16 0" fill="none" stroke="#67e7ff" stroke-width="6" stroke-linecap="round"/>
+      <path d="M80 90c7 6 13 6 20 0" fill="none" stroke="#ff84a7" stroke-width="4" stroke-linecap="round"/>
+      <path d="M88 40V27" stroke="#4e66ff" stroke-width="6" stroke-linecap="round"/><circle cx="88" cy="22" r="9" fill="url(#gBlue)"/>
+      <rect x="58" y="112" width="64" height="43" rx="18" fill="#fff" stroke="#b6c8ff" stroke-width="4"/>
+      <rect x="76" y="121" width="28" height="24" rx="8" fill="url(#gGold)"/>
+      <text x="90" y="138" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="900" fill="#243461">K</text>
+      <path d="M53 122l-22 11M127 122l22 11" stroke="#f7fbff" stroke-width="16" stroke-linecap="round"/>
+      <path d="M69 153l-13 13M111 153l13 13" stroke="#f7fbff" stroke-width="16" stroke-linecap="round"/>
+      <circle cx="31" cy="133" r="9" fill="#4e66ff"/><circle cx="149" cy="133" r="9" fill="#4e66ff"/>
+    </g>
+  </symbol>
+
+  <symbol id="world-forest" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="34" fill="#dff8e9"/>
+    <circle cx="57" cy="50" r="52" fill="#8de19b"/><circle cx="97" cy="42" r="47" fill="#63ca7e"/><circle cx="143" cy="58" r="50" fill="#78d98b"/>
+    <path d="M105 64l-8 104h36L122 64z" fill="#9b5d39"/>
+    <ellipse cx="162" cy="187" rx="132" ry="25" fill="#63c97e"/>
+    <path d="M0 184c47-20 70 11 108-1 44-14 75 9 111-1 43-12 67-6 101 2v36H0z" fill="#45b86b"/>
+    <circle cx="192" cy="112" r="55" fill="#fff7cf" stroke="#ffd56a" stroke-width="7"/>
+    <text x="192" y="139" text-anchor="middle" font-family="Arial,sans-serif" font-size="82" font-weight="900" fill="#ff6f4f">A</text>
+    <circle cx="245" cy="53" r="8" fill="#ffd05d"/><circle cx="271" cy="78" r="5" fill="#fff"/><circle cx="42" cy="117" r="6" fill="#fff"/>
+  </symbol>
+
+  <symbol id="world-village" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="34" fill="#e8f3ff"/>
+    <circle cx="68" cy="52" r="37" fill="#8ed7a2"/><circle cx="252" cy="47" r="44" fill="#7ccc98"/>
+    <path d="M48 164h224v36H48z" fill="#7cc987"/>
+    <path d="M82 101l48-42 48 42v63H82z" fill="#fff2d6" stroke="#d69a62" stroke-width="4"/><path d="M74 105l56-51 57 51" fill="#ff8061"/>
+    <path d="M169 112l35-31 36 31v52h-71z" fill="#ffe6bc" stroke="#d69a62" stroke-width="4"/><path d="M162 115l42-39 43 39" fill="#ff9a57"/>
+    <rect x="105" y="122" width="24" height="42" rx="6" fill="#8b5e45"/><rect x="196" y="128" width="18" height="36" rx="5" fill="#8b5e45"/>
+    <rect x="80" y="167" width="161" height="35" rx="12" fill="#a66a3e"/><text x="160" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="#fff">KATA</text>
+  </symbol>
+
+  <symbol id="world-island" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="34" fill="#def5ff"/>
+    <path d="M0 164c42-20 79 9 118-2 48-14 77 12 119-2 32-11 57-7 83 3v57H0z" fill="#4dc4e8"/>
+    <ellipse cx="160" cy="161" rx="105" ry="38" fill="#ffd978"/>
+    <path d="M221 126c-5-50 20-84 35-102" stroke="#9a623e" stroke-width="12" stroke-linecap="round"/>
+    <path d="M252 30c-20 0-38 9-50 25 25 2 40 0 55-11 2 17 12 27 30 34-1-26-8-40-35-48z" fill="#42b76a"/>
+    <g filter="url(#shadow)"><text x="98" y="151" text-anchor="middle" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#29b7e6">1</text><text x="160" y="137" text-anchor="middle" font-family="Arial,sans-serif" font-size="82" font-weight="900" fill="#6b5df8">2</text><text x="224" y="151" text-anchor="middle" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#ff8a43">3</text></g>
+  </symbol>
+
+  <symbol id="world-castle" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="34" fill="#eee8ff"/>
+    <circle cx="60" cy="46" r="42" fill="#a8d58d"/><circle cx="274" cy="58" r="51" fill="#8fc47d"/>
+    <path d="M0 183c54-24 105 8 150-4 59-16 94 12 170 2v39H0z" fill="#70ba74"/>
+    <path d="M77 105h165v79H77z" fill="#f7f2ff" stroke="#9b84e8" stroke-width="4"/><path d="M100 77h32v107h-32zM188 77h32v107h-32z" fill="#e3d9ff" stroke="#9b84e8" stroke-width="4"/>
+    <path d="M96 80l20-30 20 30zM184 80l20-30 20 30zM137 106l23-39 23 39z" fill="#7a5be5"/>
+    <rect x="146" y="139" width="28" height="45" rx="14" fill="#7b5cba"/>
+    <rect x="92" y="124" width="24" height="22" rx="7" fill="#7de6ff"/><rect x="204" y="124" width="24" height="22" rx="7" fill="#7de6ff"/>
+    <path d="M114 50v-20l20 8-20 8M204 50v-20l20 8-20 8" fill="#ff6b8b"/>
+  </symbol>
+
+  <symbol id="star" viewBox="0 0 64 64"><path d="M32 5l7.8 16 17.7 2.5-12.8 12.4 3 17.6L32 45.2 16.3 53.5l3-17.6L6.5 23.5l17.7-2.5z" fill="url(#gGold)" stroke="#e78b13" stroke-width="3"/></symbol>
+  <symbol id="xp" viewBox="0 0 64 64"><path d="M32 4l20 13 7 23-17 20H22L5 40l7-23z" fill="url(#gPurple)"/><path d="M21 17l11-6 11 6 6 18-17 17-17-17z" fill="#9d8cff" opacity=".55"/><text x="32" y="39" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="900" fill="#fff">XP</text></symbol>
+  <symbol id="chest-closed" viewBox="0 0 64 64"><path d="M9 26h46v28H9z" rx="6" fill="#b96928" stroke="#7b3d19" stroke-width="3"/><path d="M12 11h40l5 17H7z" fill="url(#gOrange)" stroke="#7b3d19" stroke-width="3"/><path d="M28 25h8v29h-8z" fill="#ffd55d"/><rect x="24" y="31" width="16" height="12" rx="4" fill="#6a3c19"/><circle cx="32" cy="37" r="3" fill="#ffd55d"/></symbol>
+  <symbol id="chest-open" viewBox="0 0 64 64"><path d="M9 30h46v24H9z" fill="#b96928" stroke="#7b3d19" stroke-width="3"/><path d="M10 25l7-16h36l3 12-44 10z" fill="url(#gOrange)" stroke="#7b3d19" stroke-width="3"/><path d="M28 30h8v24h-8z" fill="#ffd55d"/><path d="M22 22c4-10 16-10 20 0" fill="#fff19a" opacity=".9"/></symbol>
+  <symbol id="badge" viewBox="0 0 64 64"><circle cx="32" cy="27" r="21" fill="url(#gGold)" stroke="#e68b18" stroke-width="3"/><path d="M22 44l-3 16 13-7 13 7-3-16" fill="#ff5f71"/><path d="M32 13l4.2 8.5 9.4 1.3-6.8 6.6 1.6 9.3L32 34.3l-8.4 4.4 1.6-9.3-6.8-6.6 9.4-1.3z" fill="#fff7cf"/></symbol>
+  <symbol id="play" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="url(#gGreen)"/><path d="M26 20l20 12-20 12z" fill="#fff"/></symbol>
+  <symbol id="back" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="url(#gPink)"/><path d="M37 18L23 32l14 14M25 32h17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="restart" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="url(#gPurple)"/><path d="M42 24a15 15 0 10 2 13" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M41 15v12H29" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sound-on" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="url(#gBlue)"/><path d="M18 28h8l11-9v26l-11-9h-8z" fill="#fff"/><path d="M43 25c4 4 4 10 0 14M49 20c7 7 7 17 0 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="sound-off" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="#7f86a8"/><path d="M18 28h8l11-9v26l-11-9h-8z" fill="#fff"/><path d="M43 24l12 16M55 24L43 40" stroke="#ff6b78" stroke-width="5" stroke-linecap="round"/></symbol>
+  <symbol id="keyboard" viewBox="0 0 64 64"><rect x="6" y="14" width="52" height="36" rx="9" fill="#fff" stroke="#7584b8" stroke-width="3"/><g fill="#cfd9ff"><rect x="13" y="21" width="7" height="6" rx="2"/><rect x="23" y="21" width="7" height="6" rx="2"/><rect x="33" y="21" width="7" height="6" rx="2"/><rect x="43" y="21" width="7" height="6" rx="2"/><rect x="13" y="31" width="7" height="6" rx="2"/><rect x="23" y="31" width="7" height="6" rx="2"/><rect x="33" y="31" width="17" height="6" rx="2"/></g></symbol>
+  <symbol id="trophy" viewBox="0 0 64 64"><path d="M20 9h24v16c0 10-5 16-12 16s-12-6-12-16z" fill="url(#gGold)" stroke="#dd8518" stroke-width="3"/><path d="M20 14H9c0 12 5 19 13 19M44 14h11c0 12-5 19-13 19" fill="none" stroke="#f0a12f" stroke-width="4"/><path d="M32 41v9M21 56h22" stroke="#d98217" stroke-width="5" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="url(#gGreen)"/><path d="M19 33l8 8 18-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="flame" viewBox="0 0 64 64"><path d="M34 5c6 14-4 17 7 27 4-7 7-12 5-18 11 11 13 20 8 31-5 11-15 15-24 14C17 58 8 49 10 37c2-11 9-18 17-26-1 8 1 12 7 17 1-8 5-14 0-23z" fill="url(#gOrange)"/><path d="M31 54c-6 0-10-4-9-10 1-5 5-8 9-12 0 5 2 7 6 10 1-4 3-7 2-10 6 6 7 11 4 16-2 4-7 6-12 6z" fill="#fff1a0"/></symbol>
+</svg>
