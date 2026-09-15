@@ -1,21 +1,28 @@
 # Ketik100
 
-Ketik100 adalah web latihan mengetik ringan dan responsif yang dirancang untuk membantu siswa belajar menggunakan keyboard secara bertahap, termasuk siswa berkebutuhan khusus (ABK).
+Ketik100 adalah web game belajar mengetik yang ringan, responsif, dan dirancang agar latihan keyboard terasa lebih menyenangkan untuk siswa, termasuk siswa berkebutuhan khusus (ABK).
 
-## Fitur v1.0
+## Fitur game
 
-- Latihan **Kenal Huruf**, **Kata Pendek**, **Kalimat**, dan **Angka**.
-- Koreksi karakter langsung: benar ditandai hijau, salah ditandai merah.
-- Bantuan visual keyboard untuk menunjukkan tombol berikutnya.
-- Statistik ketepatan, kecepatan/WPM, karakter benar, dan progres sesi.
-- **Mode Fokus** untuk mengurangi distraksi visual.
-- **Text-to-Speech Bahasa Indonesia** melalui fitur bawaan browser.
-- Pilihan ukuran teks: Normal, Besar, dan Sangat Besar.
-- Tombol dan area interaksi dibuat besar untuk layar sentuh.
-- Responsive untuk HP, tablet, laptop, dan desktop.
+- **Kenal Huruf**: satu huruf tampil per ronde, tanpa kewajiban mengetik spasi.
+- **Kata Pendek**: satu kata sederhana dan familiar per kartu.
+- **Kenal Angka**: satu angka/nomor per ronde.
+- **Kalimat Mini**: kalimat pendek untuk tahap lanjutan.
+- Countdown **3 → 2 → 1 → GO!** sebelum permainan.
+- Kartu soal besar dengan visual yang jelas dan minim distraksi.
+- Keyboard visual dengan tombol berikutnya yang menyala.
+- Skor, combo, bintang, progress bar, dan ronde.
+- Animasi reward, confetti, card success, dan feedback visual.
+- Tidak ada sistem nyawa/game over; jawaban salah dapat dicoba lagi.
+- Text-to-Speech Bahasa Indonesia untuk membacakan instruksi/soal.
+- Mode Fokus untuk menyembunyikan bagian non-game.
+- Best score tersimpan di browser melalui `localStorage`.
+- Responsive untuk HP kecil, tablet, laptop, dan desktop.
 - Mendukung `prefers-reduced-motion`.
-- Progress/preferensi lokal disimpan di perangkat melalui `localStorage`.
-- Tidak membutuhkan database atau backend.
+
+## Prinsip desain ABK
+
+Ketik100 memakai pola satu target dalam satu waktu. Pada mode Kenal Huruf, siswa cukup melihat satu huruf besar, mencari tombol yang sama, lalu menekannya. Jawaban salah tidak mengurangi skor atau mengakhiri permainan; aplikasi memberi feedback singkat dan memberi kesempatan mencoba lagi.
 
 ## Struktur
 
@@ -28,45 +35,22 @@ ketik100/
 └── README.md
 ```
 
-## Menjalankan secara lokal
+Tidak membutuhkan proses build atau dependency JavaScript.
 
-Karena aplikasi ini statis, dapat dibuka langsung melalui `index.html`. Untuk pengembangan disarankan menggunakan local server, misalnya:
+## Menjalankan lokal
+
+Bisa langsung membuka `index.html`, tetapi server lokal lebih disarankan:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Kemudian buka `http://localhost:8080`.
+Lalu buka `http://localhost:8080`.
 
 ## Deploy
 
-### GitHub Pages
+Karena seluruh aplikasi statis, Ketik100 dapat dipasang di GitHub Pages, Netlify, Cloudflare Pages, atau hosting statis lainnya.
 
-1. Buka repository **Settings → Pages**.
-2. Pada **Build and deployment**, pilih **Deploy from a branch**.
-3. Pilih branch `main` dan folder `/ (root)`.
-4. Simpan.
+## Catatan
 
-### Netlify
-
-Hubungkan repository ini ke Netlify. Tidak ada build command yang diperlukan dan publish directory adalah root repository (`.`).
-
-## Prinsip UX untuk siswa ABK
-
-Ketik100 memakai latihan pendek, satu tugas utama per layar, instruksi sederhana, feedback positif, teks yang dapat diperbesar, dukungan suara, dan mode fokus. Aplikasi tidak memaksa siswa mengejar WPM tertentu; kecepatan hanya ditampilkan sebagai informasi.
-
-## Roadmap yang disarankan
-
-- Profil siswa lokal/guru.
-- Level latihan berdasarkan kemampuan individual.
-- Latihan nama sendiri, biodata, kosakata sekolah, dan aktivitas sehari-hari.
-- Mode satu huruf besar di layar untuk tahap awal.
-- Rekap hasil latihan per siswa.
-- Import materi latihan buatan guru.
-- Mode gambar → ketik nama benda.
-- PWA/offline mode.
-- Dashboard guru dengan Supabase jika nantinya membutuhkan sinkronisasi antar perangkat.
-
----
-
-**Ketik100** — belajar mengetik dengan cara yang lebih ramah.
+Speech synthesis bergantung pada dukungan browser dan voice Bahasa Indonesia yang tersedia pada perangkat pengguna.
