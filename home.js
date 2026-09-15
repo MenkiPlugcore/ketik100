@@ -1,3 +1,10 @@
+if(!document.querySelector('link[href="v13.css"]')){
+  const style=document.createElement("link");
+  style.rel="stylesheet";
+  style.href="v13.css";
+  document.head.appendChild(style);
+}
+
 const XP_PER_LEVEL = 500;
 const STORAGE_KEY = "ketik100-adventure-v12";
 const BADGES = ["first-step","alphabet-master","word-explorer","picture-explorer","number-friend","sentence-hero","combo-five"];
