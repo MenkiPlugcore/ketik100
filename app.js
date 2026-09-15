@@ -265,11 +265,8 @@ function runCountdown() {
     countdownNumber.style.animation = "countPop .7s ease";
     if (soundEnabled) speak(step.number === "GO!" ? "Mulai" : step.number);
     index += 1;
-    if (index < steps.length) {
-      countdownTimer = setTimeout(showStep, 720);
-    } else {
-      countdownTimer = setTimeout(beginRound, 650);
-    }
+    if (index < steps.length) countdownTimer = setTimeout(showStep, 720);
+    else countdownTimer = setTimeout(beginRound, 650);
   };
   showStep();
 }
@@ -319,12 +316,11 @@ function wrongAnswer() {
 
 function createConfetti(amount = 18) {
   const colors = ["#ffd45f", "#72e3b6", "#8c7cff", "#ff8f70", "#65cce6"];
-  const bounds = gameZone.getBoundingClientRect();
   for (let i = 0; i < amount; i += 1) {
     const piece = document.createElement("i");
     piece.className = "confetti";
     piece.style.left = `${20 + Math.random() * 60}%`;
-    piece.style.top = `${Math.max(20, window.scrollY ? 120 : bounds.top + 100)}px`;
+    piece.style.top = `${70 + Math.random() * 70}px`;
     piece.style.background = colors[i % colors.length];
     piece.style.animationDelay = `${Math.random() * 0.2}s`;
     piece.style.transform = `rotate(${Math.random() * 180}deg)`;
@@ -375,6 +371,7 @@ function evaluateInput() {
   updateKeyboardHint();
 
   if (!typed) {
+    targetCard.classList.remove("wrong");
     setFeedback("Lihat kartu, lalu ketik jawabannya.");
     return;
   }
@@ -384,15 +381,30 @@ function evaluateInput() {
     return;
   }
 
-  if (lesson.type === "letter" || lesson.type === "number") {
+  if (lesson.type === "letter") {
     wrongAnswer();
     return;
   }
 
   const normalizedTyped = typed.toLocaleLowerCase("id-ID");
   const normalizedTarget = target.toLocaleLowerCase("id-ID");
-  if (!normalizedTarget.startsWith(normalizedTyped)) wrongAnswer();
-  else setFeedback("Bagus, lanjutkan sedikit lagi.");
+
+  if (lesson.type === "number") {
+    if (normalizedTarget.startsWith(normalizedTyped)) {
+      targetCard.classList.remove("wrong");
+      setFeedback("Bagus, lanjutkan angkanya.");
+    } else {
+      wrongAnswer();
+    }
+    return;
+  }
+
+  if (!normalizedTarget.startsWith(normalizedTyped)) {
+    wrongAnswer();
+  } else {
+    targetCard.classList.remove("wrong");
+    setFeedback("Bagus, lanjutkan sedikit lagi.");
+  }
 }
 
 function finishGame() {
@@ -434,15 +446,14 @@ typingInput.addEventListener("paste", (event) => {
 });
 
 typingInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" && LESSONS[currentLesson].type !== "sentence") event.preventDefault();
+  if (event.key === "Enter") event.preventDefault();
 });
 
 startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", () => {
-  if (gameActive && soundEnabled) window.speechSynthesis?.cancel();
+  if (gameActive && soundEnabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
   startGame();
 });
-
 playAgainBtn.addEventListener("click", startGame);
 chooseGameBtn.addEventListener("click", () => {
   finishOverlay.hidden = true;
