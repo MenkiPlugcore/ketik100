@@ -1,0 +1,38 @@
+/* Ketik100 v1.3 — Picture Quest additions */
+
+.badge-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+
+.picture-world{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);border-color:#cceee1;background:linear-gradient(135deg,#ffffff,#f7fffb)}
+.picture-world .world-visual{min-height:260px}
+.picture-world .world-visual>svg{min-height:260px}
+.picture-world .world-body{display:flex;flex-direction:column;justify-content:center;padding:28px}
+.picture-world .difficulty{background:#e5fbf1;color:#218359}
+.picture-world .world-chip{background:linear-gradient(135deg,#fff,#eafff5);color:#20825b;border:1px solid #caeddc}
+.picture-world .play-orb{background:#e9fff4}
+
+body[data-mode="gambar"]{background:radial-gradient(circle at 15% 12%,rgba(74,214,162,.18),transparent 28%),radial-gradient(circle at 86% 10%,rgba(74,190,255,.18),transparent 30%),linear-gradient(145deg,#103f4b 0%,#145366 52%,#176c69 100%)}
+body[data-mode="gambar"] .game-header{background:rgba(10,55,65,.9)}
+body[data-mode="gambar"] .world-label{color:#c9ffe7}
+body[data-mode="gambar"] .progress-track div{background:linear-gradient(90deg,#61dfa2,#65d9ff)}
+
+.target-card.picture-mode{min-height:290px;background:radial-gradient(circle at 18% 15%,#fff,transparent 32%),linear-gradient(155deg,#f8fffb,#ecfbff);border-color:#cfeee2}
+.target-card.picture-mode:before,.target-card.picture-mode:after{opacity:.26}
+.target-line.picture{width:100%;margin:2px 0 6px;font-size:0;display:grid;place-items:center}
+.target-line.picture svg{width:min(210px,72%);height:210px;filter:drop-shadow(0 15px 18px rgba(39,68,91,.12))}
+.target-card.picture-mode .target-hint{max-width:390px;text-align:center;font-size:13px;color:#607c89}
+body[data-mode="gambar"] .input-zone input:focus{border-color:#35b985;box-shadow:0 0 0 5px rgba(53,185,133,.11)}
+
+@media(max-width:920px){
+  .picture-world{grid-template-columns:1fr}
+  .picture-world .world-body{padding:22px}
+}
+
+@media(max-width:640px){
+  .picture-world .world-visual,.picture-world .world-visual>svg{min-height:195px}
+  .target-card.picture-mode{min-height:250px;padding:16px}
+  .target-line.picture svg{width:min(180px,76%);height:180px}
+}
+
+@media(max-width:380px){
+  .target-line.picture svg{width:155px;height:155px}
+}
