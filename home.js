@@ -1,7 +1,7 @@
 const XP_PER_LEVEL = 500;
 const STORAGE_KEY = "ketik100-adventure-v12";
-const BADGES = ["first-step","alphabet-master","word-explorer","number-friend","sentence-hero","combo-five"];
-const WORLDS = ["huruf","kata","angka","kalimat"];
+const BADGES = ["first-step","alphabet-master","word-explorer","picture-explorer","number-friend","sentence-hero","combo-five"];
+const WORLDS = ["huruf","kata","gambar","angka","kalimat"];
 
 function getSavedAdventure(){
   const fallback={xp:0,totalStars:0,totalCorrect:0,chests:0,badges:[],completed:[]};
@@ -39,7 +39,10 @@ function render(){
   document.querySelectorAll("[data-status-for]").forEach(el=>{
     const id=el.dataset.statusFor;
     const done=adventure.completed.includes(id);
-    el.textContent=done?"✓ Selesai • Main lagi →":id==="huruf"?"Mulai →":"Jelajahi →";
+    if(done) el.textContent="✓ Selesai • Main lagi →";
+    else if(id==="huruf") el.textContent="Mulai →";
+    else if(id==="gambar") el.textContent="Coba Picture Quest →";
+    else el.textContent="Jelajahi →";
     el.closest(".world-card")?.classList.toggle("completed",done);
   });
 
@@ -50,8 +53,9 @@ function render(){
   });
 
   const speech=document.getElementById("mascotSpeech");
-  if(adventure.completed.length===4) speech.textContent="Semua dunia sudah selesai! Pilih dunia favoritmu dan coba pecahkan skor lagi.";
+  if(adventure.completed.length===WORLDS.length) speech.textContent="Semua dunia sudah selesai! Pilih dunia favoritmu dan coba pecahkan skor lagi.";
   else if(adventure.totalCorrect===0) speech.textContent="Hai! Aku Kibo. Ayo mulai dari Hutan Huruf!";
+  else if(!adventure.completed.includes("gambar") && adventure.totalCorrect>=5) speech.textContent="Keren! Sekarang coba Taman Gambar. Lihat gambar lalu ketik namanya!";
   else speech.textContent=`Keren! Kita sudah punya ${adventure.totalStars} bintang. Pilih dunia berikutnya ya!`;
 }
 
